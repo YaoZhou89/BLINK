@@ -1,0 +1,12 @@
+Package: BLINK
+Type: Package
+Title: BLINK: A Package for Next Level of Genome Wide Association Studies with Both Individuals and Markers in Millions
+Version: 0.1.0
+Author: Yao Zhou and Zhiwu Zhang
+Maintainer: The package maintainer <yao.zhou@genetics.ac.cn>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License:License: GPL (>= 2)
+Depends: R (>= 3.1.0), bigmemory, biganalytics,MASS, compiler
+Encoding: UTF-8
+LazyData: true
