@@ -44,7 +44,8 @@
 #Authors: Yao Zhou
 #Last update: 08/15/2016
   #GDneo = as.matrix(GDneo)
-  write.table(GDneo,"GDneo.txt",col.names = F,row.names = F,quote=F,sep="\t")
+  print(dim(GDneo))
+  print(head(GDneo))
   GDneo = as.matrix(GDneo)
   SNP.index = apply(GDneo,1,sd)!=0
   GDneo = GDneo[SNP.index,]
