@@ -9,7 +9,7 @@
 #Output: seqQTN: SNP position
 #Author: Yao Zhou
 #Last update: 01/05/2016, modified 03/31/2016
-	
+	GD = as.matrix(GD)
 	n=nrow(Y)
 	threshold=floor(n/log(n))
 	if(threshold < length(Psort)){
@@ -26,7 +26,7 @@
 
 	if(BIC.method=="naive"){
 		position=seq(1:m)
-		
+
 	} else if(BIC.method=="even"){
 		step.length=floor(sqrt(m))+1
 		step=floor(m/step.length)
@@ -54,14 +54,14 @@
 				}
 			}
 		}
-		
+
 	} else if(BIC.method=="ln"){
 		if(m==1){
 			position =c(1)
 		}else{
 			le=seq(1:m)
 			step=le/log(le)
-			
+
 			for(i in 2:m){
 				le[i]=le[i-1]+step[i]
 				le=round(le)
@@ -80,8 +80,8 @@
 	}else{
 		print("please choose one method for BIC")
 		break
-	}	
-	
+	}
+
 	BICv=rep(NA,length(position))
 	if(is.null(CV)){
 		w=as.matrix(rep(1,n))
@@ -91,16 +91,16 @@
 		CV=as.matrix(CV)
 		w=cbind(1,CV)
 		ww=crossprod(w)
-		ncov=ncol(ww)+1 
+		ncov=ncol(ww)+1
 	}
  	wwi=ginv(ww)
- 
- 	
+
+
 	pos.pre=0
 	k=0
 	for(pos in position){
 		if(pos>m) pos=m
-		if(orientation=="col"){		
+		if(orientation=="col"){
 			x=GD[,seqQTN[(pos.pre+1):pos]]
 		}else{
 			x=GD[seqQTN[(pos.pre+1):pos],]
@@ -113,7 +113,7 @@
 		k=k+1
 		pos.pre=pos
 		x=as.matrix(x)
-		
+
 		if(k==1){
 			ww=crossprod(w,w)
 		}else{
@@ -122,12 +122,12 @@
 			WW[1:nwc,(nwc+1):(nwc+nxc)]=xw
 			WW[(nwc+1):(nxc+nwc),1:nwc]=wx
 			WW[(nwc+1):(nwc+nxc),(nwc+1):(nwc+nxc)]=xx
-			ww=WW			
+			ww=WW
 		}
 		nwc = ncol(w)
 		nxc = ncol(x)
-  	  	iXX = matrix(0,(nwc+nxc),(nwc+nxc))    	
-		xx = crossprod(x,x) 
+  	  	iXX = matrix(0,(nwc+nxc),(nwc+nxc))
+		xx = crossprod(x,x)
 		xw = crossprod(x,w)
 		wx = crossprod(w,x)
 		t1 = wwi %*% wx
@@ -146,9 +146,9 @@
 		wy=crossprod(w,y)
 		wwi=iXX
 		beta=wwi %*% wy
-		yp= w %*% beta	
+		yp= w %*% beta
 		ve=as.numeric(var(yp-y))
-		RSS= (yp-y)^2	
+		RSS= (yp-y)^2
 		n2LL=n*log(2*pi)+n*log(ve)+2*sum(RSS/(2*ve))
 		# BICv[k]=n2LL+2*(nwc+nxc-1)*log(n)
 		BICv[k]=n2LL+(nwc+nxc-1)*log(n)
