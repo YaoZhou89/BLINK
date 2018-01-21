@@ -24,3 +24,6 @@ myY = read.table("myData.txt",head = T)
 
 ### # Association analysis
 myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T,BIC.method="naive")
+
+## Authors
+Dr.Zhiwu Zhang (zhiwu.zhang@wsu.edu) and Dr.Yao Zhou (yao.zhou@genetics.ac.cn)
