@@ -7,7 +7,7 @@
 		GDneo=1-abs(GDneo-1)
 	}
 
-	GDneo=as.matrix(GDneo)
+	#GDneo=as.matrix(GDneo)
 	if(min(ncol(GDneo),nrow(GDneo))<201) bound=FALSE
 	if(orientation=="col"){
 		n=nrow(GDneo)
@@ -19,10 +19,10 @@
 		if(bound){
 			GDneo=GDneo[,sample(n,200,replace=F)]
 		}
-		GDneo=t(GDneo)	
+		GDneo=t(GDneo)
 	}
 	# cat("ncol(GDneo) is",ncol(GDneo),"\n")
-	corr=cor(GDneo)	
+	corr=cor(GDneo)
 	corr[is.na(corr)]=1
 	corr[abs(corr)<=LD]=0
 	corr[abs(corr)>LD]=1
@@ -36,7 +36,7 @@
 		if(sum(index)!=0) Psort[i]=0
 	}
 	seqQTN=Porder[Psort==1]
-	return(seqQTN)	
+	return(seqQTN)
 }
 
 `Blink.LDRemove`<-function(GDneo=NULL,LD=0.7,Porder=NULL,bound=FALSE,model="A",orientation="row",block=1000,LD.num =50){
@@ -62,14 +62,14 @@
 		if(bound){
 			GDneo=GDneo[,sample(n,200,replace=F)]
 		}
-		GDneo=t(GDneo)	
+		GDneo=t(GDneo)
 	}
 	for(i in 1:k){
 		bottom=(i-1)*l+1
 		up=l*i
 		if(up>lp) up = lp
 		Porderb=Porder[bottom:up]
-		
+
 		index = seq(bottom:up)
 		GDneob = GDneo[,index]
 		# cat("i is ",i,"\n")
@@ -86,14 +86,14 @@
 		  }else{
 		    seqQTN = Porderb
 		  }
-		  
+
 		}
 		if(LD.num < length(seqQTN)) break
 	}
 	rm(GDneob,Porderb)
 	return(seqQTN)
 }
-# 
+#
 # `Blink.LDRemove`<-function(GDneo=NULL,LD=NULL,Porder=NULL,bound=FALSE,model="A",orientation=NULL){
 # #`Blink.LDRemovebackup`<-function(GDneo=NULL,LD=NULL,Porder=NULL,bound=FALSE,model="A",orientation=NULL){
 # #Objects: LD remove, especially length(Porder)>10000
@@ -118,15 +118,15 @@
 # 		ls=length(Pordern)
 # 		if(ls==lp) lp=l*tt
 # 		if(ls<=lp){
-# 			is.done=TRUE	
+# 			is.done=TRUE
 # 		}
 # 		Porder = Pordern
-# 	}	
+# 	}
 # 	if(length(Porder) > 1){
-# 		seqQTN=Blink.LDRemoveBlock(GDneo=GDneo,LD=LD,Porder=Porder,orientation=orientation,model=model)	
+# 		seqQTN=Blink.LDRemoveBlock(GDneo=GDneo,LD=LD,Porder=Porder,orientation=orientation,model=model)
 # 	}else{
 # 		seqQTN = Porder
 # 	}
-# 	return(seqQTN)	
+# 	return(seqQTN)
 # }
 
