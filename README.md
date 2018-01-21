@@ -8,7 +8,7 @@ devtools::install_github("YaoZhou89/BLINK")
 Demo Data could find at:  http://zzlab.net/blink/Demo_Data.zip
 
 BLINK R version only support numeric data type
-##
+## Usage
 source("http://zzlab.net/GAPIT/gapit_functions.txt")
 
 source("http://zzlab.net/FarmCPU/FarmCPU_functions.txt")
