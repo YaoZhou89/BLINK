@@ -1,5 +1,5 @@
 `Blink` <- function(Y=NULL,QTN.position=NULL,GD=NULL,GM=NULL,CV=NULL,DPP=100000000,kinship.algorithm="FARM-CPU",file.output=TRUE,cutOff=0.01,method.GLM="FarmCPU.LM",Prior=NULL,ncpus=1,maxLoop=10,LD=0.7,threshold.output=.0001,alpha=c(.01,.05,.1,.2,.3,.4,.5,.6,.7,.8,.9,1),WS=c(1e0,1e3,1e4,1e5,1e6,1e7),GP=NULL
-,maxOut=10,converge=1,iteration.output=FALSE,acceleration=0,threshold=NA,model="A",MAF.calculate=FALSE,plot.style="FarmCPU",p.threshold=NA,maf.threshold=0,bound=FALSE,method.sub="reward",method.sub.final="reward",stepwise=FALSE,BIC.method="even",LD.wise=FALSE,time.cal=FALSE,Prediction = F){
+,maxOut=10,converge=1,iteration.output=FALSE,acceleration=0,threshold=NA,model="A",MAF.calculate=FALSE,plot.style="FarmCPU",p.threshold=NA,maf.threshold=0,bound=FALSE,method.sub="reward",method.sub.final="reward",stepwise=FALSE,BIC.method="naive",LD.wise=FALSE,time.cal=FALSE,Prediction = F){
 	print("----------------------Welcome to Blink----------------------")
 	time.start=proc.time()
 	nm=nrow(GM)

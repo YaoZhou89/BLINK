@@ -23,7 +23,7 @@ myGD=read.big.matrix("myData.dat",head=F,sep="\t",type="char")
 myY = read.table("myData.txt",head = T)
 
 ### # Association analysis
-myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T,BIC.method="naive")
+myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T)
 
 ## Authors
 Dr.Zhiwu Zhang (zhiwu.zhang@wsu.edu) and Dr.Yao Zhou (yao.zhou@genetics.ac.cn)

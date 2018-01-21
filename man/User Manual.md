@@ -1,26 +1,22 @@
-## BLINK
-## Installation
-install.packages("devtools")
+## How to run multiple traits?
+## BLINKR could only run one trait per time, if you want to run all trails in the
+## myY, you can run like this:
+for (i in 2:ncol(myY)){
+  myBlink=Blink(Y=myY[,c(1,i)],GD=myGD,GM=myGM,maxLoop=10,time.cal=T,BIC.method="naive")
+}
 
-devtools::install_github("YaoZhou89/BLINK")
+## How to add coviates?
+## Note: the covriates file should be n by q, n is the individuals number and q is the number of covriates, and the order should be the same with myY and myGD
 
-## Demo Data
-Demo Data could find at:  http://zzlab.net/blink/Demo_Data.zip
-
-Note: BLINK R version only support numeric data type
-## Usage
-source("http://zzlab.net/GAPIT/gapit_functions.txt")
-
-source("http://zzlab.net/FarmCPU/FarmCPU_functions.txt")
-
-library(BLINK)
-
-### #read genotype, genotype information, phenotypes
-myGM=read.table("myData.map",head=T)
-
-myGD=read.big.matrix("myData.dat",head=F,sep="\t",type="char")
-
-myY = read.table("myData.txt",head = T)
-
-### # Association analysis
-myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T,BIC.method="naive")
+## if you want to add the top 3 PCs as coviates, you can:
+## 1. calculate PCs using prcomp:
+    cov = prcomp(as.matrix(myGD))
+## 2. then extract the top 3 PCs:
+    myCV = cov$x[,1:3]
+## 3. run BLINK with PCs:
+    myBlink=Blink(Y=myY,GD=myGD,GM=myGM,CV = myCV, maxLoop = 10, time.cal = T)
+    
+## Parameters may be useful
+# time.cal: calculate the time spend in each step;
+# maxLoop: the loop for iteration
+# maf.threshold: filter SNPs with MAF < maf.threshold
