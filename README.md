@@ -16,8 +16,10 @@ source("http://zzlab.net/FarmCPU/FarmCPU_functions.txt")
 library(BLINK)
 
 ### #read genotype, genotype information, phenotypes
-myGM=read.table("myData.map",head=T)\n
-myGD=read.big.matrix("myData.dat",head=F,sep="\t",type="char")\n
+myGM=read.table("myData.map",head=T)
+
+myGD=read.big.matrix("myData.dat",head=F,sep="\t",type="char")
+
 myY = read.table("myData.txt",head = T)
 
 ### # Association analysis
