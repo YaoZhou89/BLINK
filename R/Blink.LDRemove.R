@@ -7,7 +7,7 @@
 		GDneo=1-abs(GDneo-1)
 	}
 
-	#GDneo=as.matrix(GDneo)
+	GDneo=as.matrix(GDneo)
 	if(min(ncol(GDneo),nrow(GDneo))<201) bound=FALSE
 	if(orientation=="col"){
 		n=nrow(GDneo)
@@ -43,6 +43,7 @@
 #Objects: LD remove, especially length(Porder)>10000
 #Authors: Yao Zhou
 #Last update: 08/15/2016
+  GDneo = as.matrix(GDneo)
   SNP.index = apply(GDneo,1,sd)!=0
   GDneo = GDneo[SNP.index,]
   Porder = Porder[SNP.index]
