@@ -4,7 +4,7 @@ install.packages("devtools")
 
 devtools::install_github("YaoZhou89/BLINK")
 
-## Demo Data:
+## Demo Data
 Demo Data could find at:  http://zzlab.net/blink/Demo_Data.zip
 
 Note: BLINK R version only support numeric data type
