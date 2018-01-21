@@ -18,7 +18,7 @@
 	if(maf.threshold > 0) {
 		MAF.calculate = TRUE
 	}
-	
+
 	if(MAF.calculate==FALSE){
         MAF=NA
     }else{
@@ -28,7 +28,7 @@
     }
     MAF.index = 1:nm
     if(maf.threshold > 0) {
-		MAF.index = MAF > maf.threshold	
+		MAF.index = MAF > maf.threshold
 		MAF = MAF[MAF.index]
 	}
 	ac=NULL
@@ -50,7 +50,7 @@
 	# GD=as.matrix(GD)
 	gc()
 	shift=0
-	for(trait in 2:ncol(Y)){
+	for(trait in 2:2){
 		name.of.trait=colnames(Y)[trait]
 		index=MAF.index
 		seqTaxa=which(!is.na(Y[,trait]))
@@ -64,7 +64,6 @@
 		}else{
 			CV1=NULL
 		}
-		
 		if(orientation=="col"){
             if(is.big.matrix(GD)){
                 GD1=deepcopy(GD,rows=seqTaxa,cols=index)
@@ -91,7 +90,7 @@
 			theLoop=theLoop+1
 			print(paste("----------------------Iteration:",theLoop,"----------------------",sep=" "))
 			if(iteration.output) name.of.trait2=paste("Iteration_",theLoop,".",name.of.trait,sep="")
-			myPrior=FarmCPU.Prior(GM=GM,P=P,Prior=Prior,kinship.algorithm=kinship.algorithm)	
+			myPrior=FarmCPU.Prior(GM=GM,P=P,Prior=Prior,kinship.algorithm=kinship.algorithm)
    			if(!is.null(myPrior)){
 				if(theLoop!=1){
   	  				seqQTN.p=myPrior
@@ -108,7 +107,7 @@
                				index.p=seqQTN.p<p.threshold
             			}
 						index.p[is.na(index.p)]=FALSE
-            			seqQTN.selected=as.numeric(which(index.p))		
+            			seqQTN.selected=as.numeric(which(index.p))
         			}
 
 					Porder=order(myPrior[seqQTN.selected],na.last=T,decreasing=FALSE)
@@ -129,25 +128,25 @@
 							}
 							Porder=Porder_new
             			}
-            			
+
 						if(is.big.matrix(GD1)){
 							if(orientation=="col"){
 								GDnew=deepcopy(GD1,cols=seqQTN.selected)
 								GDneo=deepcopy(GDnew,cols=Porder)
 							}else{
 								GDnew=deepcopy(GD1,rows=seqQTN.selected)
-								GDneo=deepcopy(GDnew,rows=Porder)						
+								GDneo=deepcopy(GDnew,rows=Porder)
 							}
 						}else{
 							if(orientation=="col"){
-								GDnew=GD1[,seqQTN.selected]					
-								GDneo=GDnew[,Porder]											
+								GDnew=GD1[,seqQTN.selected]
+								GDneo=GDnew[,Porder]
 							}else{
-								GDnew=GD1[seqQTN.selected,]					
-								GDneo=GDnew[Porder,]						
-							}		
+								GDnew=GD1[seqQTN.selected,]
+								GDneo=GDnew[Porder,]
+							}
 						}
-						
+
 						print("LD remove is working....")
 						print("Number SNPs for LD remove:")
 						print(length(Porder))
@@ -174,7 +173,7 @@
 			}else{
 				seqQTN=NULL
 			}
-		
+
 			if(theLoop==2){
        			if(!is.na(p.threshold)){
         			if(min(myPrior,na.rm=TRUE)>p.threshold){
@@ -187,7 +186,7 @@
        		     		print("Top snps have little effect, set seqQTN to NULL!")
        		 		}
           	 	}
-    		}	
+    		}
 			if(theLoop==2&&is.null(seqQTN)|length(seqQTN)==0&&theLoop==2){
 	   			print(paste("seqQTN is:",seqQTN,",stop here",sep=""))
     			if(!isDone | iteration.output){
@@ -203,7 +202,7 @@
             		Vp=var(Y1[,2],na.rm=TRUE)
             		if(file.output) GAPIT.Report(name.of.trait=name.of.trait2,GWAS=GWAS,pred=NULL,tvalue=NULL,stderr=stderr,Vp=Vp,DPP=DPP,cutOff=cutOff,threshold.output=threshold.output,MAF=MAF,seqQTN=QTN.position,MAF.calculate=MAF.calculate,plot.style=plot.style)
                     myPower=GAPIT.Power(WS=WS, alpha=alpha, maxOut=maxOut,seqQTN=QTN.position,GM=GM,GWAS=GWAS,MaxBP=1e10)
-        		} 
+        		}
             	break
 			}
 			if(theLoop>1){
@@ -215,8 +214,8 @@
 					seqQTN = BIC$seqQTN
 				}
 			}
-	
-			print("seqQTN:")   
+
+			print("seqQTN:")
 			print(seqQTN)
 			theConverge=length(intersect(seqQTN,seqQTN.save))/length(union(seqQTN,seqQTN.save))
 			isDone=((theLoop>=maxLoop)|(theConverge>=converge))
@@ -262,14 +261,14 @@
 			stderr=myGLM$P[,3*nf-shift]
 			GWAS=cbind(GM[MAF.index,],P,MAF,NA,NA,NA,NA)
 			colnames(GWAS)=c(colnames(GM),"P.value","maf","nobs","Rsquare.of.Model.without.SNP","Rsquare.of.Model.with.SNP","FDR_Adjusted_P-values")
-			Vp=var(Y1[,2],na.rm=TRUE)		
+			Vp=var(Y1[,2],na.rm=TRUE)
 			if(file.output){
 				if(theLoop==1&&is.null(CV)){
 					GAPIT.Report(name.of.trait=name.of.trait2,GWAS=GWAS,pred=NULL,ypred=NULL,tvalue=NULL,stderr=stderr,Vp=Vp,DPP=DPP,cutOff=cutOff,threshold.output=threshold.output,MAF=MAF,seqQTN=QTN.position,MAF.calculate=MAF.calculate,plot.style=plot.style)
 				}else{
 					GAPIT.Report(name.of.trait=name.of.trait2,GWAS=GWAS,pred=NULL,ypred=NULL,tvalue=NULL,stderr=stderr,Vp=Vp,DPP=DPP,cutOff=cutOff,threshold.output=threshold.output,MAF=MAF,seqQTN=QTN.position,MAF.calculate=MAF.calculate,plot.style=plot.style)
 				}
-			}# end of file.out		
+			}# end of file.out
 		}	#end of theLoop
 		PEV=NULL
 		if(Prediction){
@@ -314,5 +313,5 @@
 		write.table(GWAS,paste(name.of.trait2,"_GWAS.txt",sep=""),sep="\t",col.names=T,row.names=F)
 	}#end of phenotype
 	return(list(GWAS=GWAS,myGLM=myGLM,PEV = PEV))
-}#	end of function Blink	
+}#	end of function Blink
 
