@@ -1,13 +1,13 @@
 ## BLINK
+This is the R version of BLINK model. You can find the C version here: https://github.com/Menggg/BLINK
 ## Installation
 install.packages("devtools")
 
 devtools::install_github("YaoZhou89/BLINK")
 
 ## Demo Data
-Demo Data could find at: https://github.com/Menggg/BLINK/tree/master/demo_data/numeric
+BLINK R version only support numeric data type.
 
-Note: BLINK R version only support numeric data type
 ## Usage
 source("http://zzlab.net/GAPIT/gapit_functions.txt")
 
