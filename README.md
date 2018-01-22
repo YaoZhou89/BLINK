@@ -16,7 +16,7 @@ BLINK R version only support numeric data type.
 
     library(BLINK)
 
-#### # genotype information
+#### # genotype information data
     myGM=read.table("myData.map",head=T)
 #### # genotype data
     myGD=read.big.matrix("myData.dat",head=F,sep="\t",type="char") 
