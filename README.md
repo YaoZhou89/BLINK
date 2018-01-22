@@ -5,7 +5,7 @@ install.packages("devtools")
 devtools::install_github("YaoZhou89/BLINK")
 
 ## Demo Data
-Demo Data could find at:  http://zzlab.net/blink/Demo_Data.zip
+Demo Data could find at: https://github.com/Menggg/BLINK/tree/master/demo_data/numeric
 
 Note: BLINK R version only support numeric data type
 ## Usage
@@ -25,5 +25,5 @@ myY = read.table("myData.txt",head = T)
 ### # Association analysis
 myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T)
 
-## Authors
-Dr.Zhiwu Zhang (zhiwu.zhang@wsu.edu) and Dr.Yao Zhou (yao.zhou@genetics.ac.cn)
+## Author
+Dr.Yao Zhou (yao.zhou@genetics.ac.cn)
