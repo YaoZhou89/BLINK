@@ -23,7 +23,7 @@ BLINK R version only support numeric data type.
 #### #phenotype data
     myY = read.table("myData.txt",head = T) 
 
-### #Association analysis
+#### #Association analysis
     myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T) # more parameters explained in man/user manual
 
 ## Author
