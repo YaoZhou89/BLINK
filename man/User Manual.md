@@ -15,7 +15,7 @@
 ### 3. run BLINK with PCs:
     myBlink=Blink(Y=myY,GD=myGD,GM=myGM,CV = myCV, maxLoop = 10, time.cal = T)
     
-## Parameters may be useful
+# Parameters may be useful
     time.cal: calculate the time spend in each step;
 
     maxLoop: the loop for iteration;
