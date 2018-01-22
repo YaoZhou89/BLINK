@@ -1,9 +1,9 @@
 ## BLINK
 This is the R version of BLINK model. You can find the C version here: https://github.com/Menggg/BLINK
 ## Installation
-install.packages("devtools")
+    install.packages("devtools")
 
-devtools::install_github("YaoZhou89/BLINK")
+    devtools::install_github("YaoZhou89/BLINK")
 
 ## Demo Data
 BLINK R version only support numeric data type.
