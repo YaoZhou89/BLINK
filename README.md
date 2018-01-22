@@ -16,14 +16,14 @@ BLINK R version only support numeric data type.
 
     library(BLINK)
 
-#### #genotype information
+#### # genotype information
     myGM=read.table("myData.map",head=T)
-#### #genotype data
+#### # genotype data
     myGD=read.big.matrix("myData.dat",head=F,sep="\t",type="char") 
-#### #phenotype data
+#### # phenotype data
     myY = read.table("myData.txt",head = T) 
 
-#### #Association analysis
+#### # association analysis
     myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T) # more parameters explained in man/user manual
 
 ## Author
