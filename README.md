@@ -9,21 +9,22 @@ devtools::install_github("YaoZhou89/BLINK")
 BLINK R version only support numeric data type.
 
 ## Usage
-source("http://zzlab.net/GAPIT/gapit_functions.txt")
+#### # source functions needed
+    source("http://zzlab.net/GAPIT/gapit_functions.txt")
 
-source("http://zzlab.net/FarmCPU/FarmCPU_functions.txt")
+    source("http://zzlab.net/FarmCPU/FarmCPU_functions.txt")
 
-library(BLINK)
+    library(BLINK)
 
-### #read genotype, genotype information, phenotypes
-myGM=read.table("myData.map",head=T) # genotype information data
+#### #genotype information
+    myGM=read.table("myData.map",head=T)
+#### #genotype data
+    myGD=read.big.matrix("myData.dat",head=F,sep="\t",type="char") 
+#### #phenotype data
+    myY = read.table("myData.txt",head = T) 
 
-myGD=read.big.matrix("myData.dat",head=F,sep="\t",type="char") # genotype data
-
-myY = read.table("myData.txt",head = T) # phenotype data
-
-### # Association analysis
-myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T) # more parameters explained in man/user manual
+### #Association analysis
+    myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T) # more parameters explained in man/user manual
 
 ## Author
-Dr.Yao Zhou (yao.zhou@genetics.ac.cn)
+Dr. Yao Zhou (yao.zhou@genetics.ac.cn)
