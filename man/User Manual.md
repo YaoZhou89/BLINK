@@ -12,6 +12,8 @@
     cov = prcomp(as.matrix(myGD))
 ### 2. then extract the top 3 PCs:
     myCV = cov$x[,1:3]
+    # if you only have one CV, the format should be matrix format. 
+    myCV = as.matrix(cov$x[,1])
 ### 3. run BLINK with PCs:
     myBlink=Blink(Y=myY,GD=myGD,GM=myGM,CV = myCV, maxLoop = 10, time.cal = T)
     
