@@ -44,8 +44,13 @@
 #Authors: Yao Zhou
 #Last update: 08/15/2016
   GDneo = as.matrix(GDneo)
-  SNP.index = apply(GDneo,1,sd)!=0
-  GDneo = GDneo[SNP.index,]
+  if (orientation == "row") {
+    SNP.index = apply(GDneo,1,sd)!=0
+    GDneo = GDneo[SNP.index,]
+  } else {
+    SNP.index = apply(GDneo, 2, sd) != 0
+    GDneo = GDneo[, SNP.index]
+  }
   Porder = Porder[SNP.index]
   l = block
 	seqQTN=NULL
