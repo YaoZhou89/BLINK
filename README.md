@@ -26,5 +26,11 @@ BLINK R version only support numeric data type.
 #### # association analysis
     myBlink=Blink(Y=myY,GD=myGD,GM=myGM,maxLoop=10,time.cal=T) # more parameters explained in man/user manual
 
+## The license notice
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+
 ## Author
 Dr. Yao Zhou (yao.zhou@genetics.ac.cn)
