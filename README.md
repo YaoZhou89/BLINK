@@ -28,7 +28,7 @@ BLINK R version only support numeric data type.
 #### # more features   
 More parameters explained [here](https://github.com/YaoZhou89/BLINK/blob/master/man/User%20Manual.md)
 
-### # Issues
+### Issues
 Bugs could be reported [here](https://github.com/YaoZhou89/BLINK/issues)
 
 ## The license notice
