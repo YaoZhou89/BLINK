@@ -28,6 +28,9 @@ BLINK R version only support numeric data type.
 #### # more features   
 More parameters explained [here](https://github.com/YaoZhou89/BLINK/blob/master/man/User%20Manual.md)
 
+### # Issues
+Bugs could be reported [here](https://github.com/YaoZhou89/BLINK/issues)
+
 ## The license notice
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
