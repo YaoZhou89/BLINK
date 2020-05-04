@@ -38,4 +38,4 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 
 ## Author
-Dr. Yao Zhou (yao.zhou@genetics.ac.cn)
+Dr. Yao Zhou (zhouyao@caas.cn)
