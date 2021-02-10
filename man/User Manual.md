@@ -9,6 +9,7 @@
 # How to add coviates?
 ### Note: the covriates file should be n by q, n is the individuals number and q is the number of covriates, and the order should be the same with myY and myGD. Like adding the top 3 PCs as coviates:
 ### 1. calculate PCs using prcomp:
+    myGD = data.frame(myGD[,-1], row.names = myGD[,1])
     cov = prcomp(as.matrix(myGD))
 ### 2. then extract the top 3 PCs:
     myCV = cov$x[,1:3]
